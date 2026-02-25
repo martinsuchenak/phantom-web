@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   initSkipLink();
   initCodeCopy();
+  initScrollablePre();
   initThemeSwitcher();
 });
 
@@ -161,6 +162,22 @@ function initCodeCopy() {
     });
 
     wrapper.appendChild(copyButton);
+  });
+}
+
+/**
+ * Make scrollable pre elements keyboard accessible
+ */
+function initScrollablePre() {
+  const preElements = document.querySelectorAll('pre');
+
+  preElements.forEach((pre) => {
+    // Check if the element has horizontal scroll
+    if (pre.scrollWidth > pre.clientWidth) {
+      pre.setAttribute('tabindex', '0');
+      pre.setAttribute('role', 'region');
+      pre.setAttribute('aria-label', 'Code block - scrollable');
+    }
   });
 }
 

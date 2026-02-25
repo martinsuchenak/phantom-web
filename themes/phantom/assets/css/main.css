@@ -893,6 +893,12 @@ pre {
   margin-bottom: var(--spacing-4);
 }
 
+/* Make scrollable pre elements keyboard accessible */
+pre[tabindex="0"]:focus {
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
+}
+
 pre code {
   background: none;
   padding: 0;
