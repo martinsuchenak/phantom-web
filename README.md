@@ -1,6 +1,6 @@
 # Phantom Website
 
-This is the official website for [Phantom](https://github.com/martinsuchenak/phantom), built with [Hugo](https://gohugo.io/) and deployed to [Cloudflare Pages](https://pages.cloudflare.com/).
+This is the official website for [Phantom](https://github.com/martinsuchenak/phantom), built with [Hugo](https://gohugo.io/).
 
 ## Development
 
@@ -55,7 +55,6 @@ phantom-web/
 
 ## Theme Features
 
-- WCAG 2.2 Level AAA compliant
 - Responsive design
 - Dark mode support (coming soon)
 - Minimal dependencies
