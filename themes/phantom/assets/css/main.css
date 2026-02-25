@@ -1003,9 +1003,16 @@ pre code {
 }
 
 .docs-sidebar {
-  position: sticky;
-  top: calc(80px + var(--spacing-4));
-  height: fit-content;
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .docs-sidebar {
+    display: block;
+    position: sticky;
+    top: calc(80px + var(--spacing-4));
+    height: fit-content;
+  }
 }
 
 .docs-nav-title {
