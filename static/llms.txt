@@ -1,0 +1,55 @@
+# Phantom
+
+> Phantom is a CLI tool for managing overlay filesystems to enable multiple AI agents to work on the same codebase in parallel without conflicts. Each agent gets its own isolated overlay with independent writes and its own git branch.
+
+Key features:
+- Cross-platform: Linux (native overlayfs + fuse-overlayfs) and macOS (unionfs-fuse)
+- Git integration: automatic branch per overlay, commit, push, merge
+- Run agents in parallel (`run-all`) or sequentially (`run-chain`)
+- Post-run hooks for linting, testing, notifications
+- Overlay snapshots, cloning, merging, comparing
+- Single binary, no runtime dependencies beyond FUSE
+
+## Installation
+
+- [Homebrew](https://github.com/martinsuchenak/phantom#installation): `brew install martinsuchenak/tap/phantom`
+- [Binary Download](https://github.com/martinsuchenak/phantom/releases): Download from GitHub Releases
+- [Build from Source](https://github.com/martinsuchenak/phantom#build-from-source): Clone and run `make build`
+
+## Documentation
+
+- [Installation Guide](/installation/): Prerequisites and installation methods
+- [Getting Started](/docs/): Core concepts and basic workflow
+- [Commands Reference](/docs/commands/): All CLI commands, flags, and options
+- [Workflows & Examples](/docs/workflows/): Real-world usage patterns
+- [Configuration](/docs/configuration/): Config files, hooks, environment variables
+
+## Core Concepts
+
+- **Overlay**: A writable filesystem layer on top of the base project. Each overlay gets a unique mount point, git branch, and state.
+- **Agent**: Any CLI command that modifies files (e.g., `claude --print`, `aider`, `gemini`).
+- **Workflows**: Single agent (`run`), parallel agents (`run-all`), or sequential chain (`run-chain`).
+
+## Quick Start
+
+```bash
+# Install
+brew install martinsuchenak/tap/phantom
+
+# Initialize
+phantom init
+
+# Run an agent
+phantom run ~/myproject --agent "claude --print" --task "implement auth" --name auth-feature
+
+# Check changes
+phantom diff auth-feature
+
+# Apply to base
+phantom apply auth-feature --cleanup
+```
+
+## Optional
+
+- [GitHub Repository](https://github.com/martinsuchenak/phantom): Source code and issue tracker
+- [TUI Dashboard](/docs/tui/): Interactive terminal UI reference
