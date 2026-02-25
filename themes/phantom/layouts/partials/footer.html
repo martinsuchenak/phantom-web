@@ -1,0 +1,38 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo" aria-label="Phantom - Home">
+          {{ partial "logo.html" . }}
+          <span class="footer-logo-text">Phantom</span>
+        </a>
+        <p class="footer-tagline">{{ .Site.Params.description }}</p>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-section">
+          <h2 class="footer-heading">Documentation</h2>
+          <ul class="footer-list">
+            <li><a href="/installation/">Installation</a></li>
+            <li><a href="/docs/">Getting Started</a></li>
+            <li><a href="/docs/commands/">Commands</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h2 class="footer-heading">Community</h2>
+          <ul class="footer-list">
+            <li><a href="https://github.com/martinsuchenak/phantom" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://github.com/martinsuchenak/phantom/issues" target="_blank" rel="noopener noreferrer">Report Issue</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">
+        &copy; {{ now.Year }} Martin Suchenak. Released under the <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT License</a>.
+      </p>
+    </div>
+  </div>
+</footer>

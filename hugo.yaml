@@ -1,0 +1,64 @@
+baseURL: https://phantom.martinsuchenak.com/
+languageCode: en-us
+title: Phantom
+description: A CLI tool for managing overlay filesystems to enable multiple AI agents to work on the same codebase in parallel without conflicts
+
+theme: phantom
+
+menus:
+  main:
+    - name: Home
+      pageRef: /
+      weight: 1
+    - name: Installation
+      pageRef: /installation
+      weight: 2
+    - name: Documentation
+      pageRef: /docs
+      weight: 3
+    - name: GitHub
+      url: https://github.com/martinsuchenak/phantom
+      params:
+        external: true
+      weight: 4
+
+params:
+  description: A CLI tool for managing overlay filesystems to enable multiple AI agents to work on the same codebase in parallel without conflicts
+  github: https://github.com/martinsuchenak/phantom
+  version: latest
+  license: MIT
+
+markup:
+  highlight:
+    codeFences: true
+    guessSyntax: true
+    lineNos: false
+    noClasses: false
+    style: github
+  goldmark:
+    renderer:
+      unsafe: true
+
+outputs:
+  home:
+    - HTML
+    - RSS
+  section:
+    - HTML
+
+module:
+  mounts:
+    - source: content
+      target: content
+    - source: static
+      target: static
+    - source: layouts
+      target: layouts
+    - source: data
+      target: data
+    - source: assets
+      target: assets
+    - source: i18n
+      target: i18n
+    - source: archetypes
+      target: archetypes

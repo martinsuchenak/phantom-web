@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(hugo version)",
+      "Bash(hugo new site . --format yaml)",
+      "Bash(hugo new site . --format yaml --force)",
+      "Bash(hugo --minify)"
+    ]
+  }
+}

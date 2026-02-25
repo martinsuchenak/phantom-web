@@ -1,0 +1,124 @@
+{{ define "main" }}
+<section class="hero">
+  <div class="container">
+    <div class="hero-logo-wrapper">
+      {{ partial "hero-logo.html" . }}
+    </div>
+    <h1 class="hero-title">{{ .Site.Title }}</h1>
+    <p class="hero-subtitle">{{ .Site.Params.description }}</p>
+    <div class="hero-actions">
+      <a href="/installation/" class="btn btn-primary btn-lg">Get Started</a>
+      <a href="https://github.com/martinsuchenak/phantom" class="btn btn-secondary btn-lg" target="_blank" rel="noopener noreferrer">
+        View on GitHub
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="container">
+    <h2 class="features-title">Features</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">🔄</div>
+        <h3 class="feature-title">Parallel Agents</h3>
+        <p class="feature-description">Run multiple AI agents on the same codebase simultaneously without conflicts. Each agent gets its own isolated overlay.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">🌿</div>
+        <h3 class="feature-title">Git Integration</h3>
+        <p class="feature-description">Automatic branch per overlay. Commit, push, and merge changes with full git workflow support.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">🔗</div>
+        <h3 class="feature-title">Chain Workflows</h3>
+        <p class="feature-description">Run agents sequentially where each step builds on the previous one's work. Perfect for complex pipelines.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">💻</div>
+        <h3 class="feature-title">Cross-Platform</h3>
+        <p class="feature-description">Works on Linux (native overlayfs or fuse-overlayfs) and macOS (unionfs-fuse). Auto-detects the best backend.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">🎣</div>
+        <h3 class="feature-title">Post-Run Hooks</h3>
+        <p class="feature-description">Automate linting, testing, and notifications after agent runs. Integrate with your existing toolchain.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">📦</div>
+        <h3 class="feature-title">Single Binary</h3>
+        <p class="feature-description">No runtime dependencies beyond FUSE. Install via Homebrew or download the binary directly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quickstart">
+  <div class="container">
+    <h2 class="quickstart-title">Quick Start</h2>
+    <div class="quickstart-steps">
+      <div class="quickstart-step">
+        <p>
+          <span class="quickstart-step-number" aria-hidden="true">1</span>
+          <span class="quickstart-step-title">Install</span>
+        </p>
+        <pre><code class="language-bash">brew install martinsuchenak/tap/phantom</code></pre>
+      </div>
+
+      <div class="quickstart-step">
+        <p>
+          <span class="quickstart-step-number" aria-hidden="true">2</span>
+          <span class="quickstart-step-title">Initialize</span>
+        </p>
+        <pre><code class="language-bash">phantom init</code></pre>
+      </div>
+
+      <div class="quickstart-step">
+        <p>
+          <span class="quickstart-step-number" aria-hidden="true">3</span>
+          <span class="quickstart-step-title">Run an agent</span>
+        </p>
+        <pre><code class="language-bash">phantom run ~/myproject --agent "claude --print" --task "implement auth" --name auth-feature</code></pre>
+      </div>
+
+      <div class="quickstart-step">
+        <p>
+          <span class="quickstart-step-number" aria-hidden="true">4</span>
+          <span class="quickstart-step-title">Apply changes</span>
+        </p>
+        <pre><code class="language-bash">phantom apply auth-feature --cleanup</code></pre>
+      </div>
+    </div>
+
+    <div class="text-center mt-8">
+      <a href="/installation/" class="btn btn-primary">Full Installation Guide</a>
+    </div>
+  </div>
+</section>
+
+<section class="features" style="background-color: transparent;">
+  <div class="container">
+    <h2 class="features-title">How It Works</h2>
+    <div class="text-center">
+      <pre style="text-align: left; display: inline-block; max-width: 100%; overflow-x: auto;"><code class="language-text">Base Directory (read-only lower layer)
+         ↓
+   ┌─────────────┐
+   │  Overlay A   │  → phantom/feature-auth  → ~/.phantom/mnt/feature-auth/
+   │  Overlay B   │  → phantom/feature-api   → ~/.phantom/mnt/feature-api/
+   │  Overlay C   │  → phantom/feature-tests → ~/.phantom/mnt/feature-tests/
+   └─────────────┘
+         ↑
+  Isolated upper layers (~/.phantom/overlays/&lt;name&gt;/upper/)</code></pre>
+    </div>
+    <p class="text-center" style="max-width: 700px; margin: var(--spacing-6) auto 0;">
+      Phantom creates a writable overlay on top of your project directory. The base stays untouched — all writes go to an isolated upper layer. Each overlay gets its own mount point, git branch, and state.
+    </p>
+  </div>
+</section>
+{{ end }}
