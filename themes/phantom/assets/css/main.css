@@ -610,8 +610,14 @@ html:not([data-theme]) .theme-icon-system {
 
 @media (min-width: 768px) {
   .footer-content {
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 1fr auto;
+    justify-items: start;
   }
+}
+
+.footer-links {
+  display: flex;
+  gap: var(--spacing-10);
 }
 
 .footer-logo {
@@ -652,8 +658,15 @@ html:not([data-theme]) .theme-icon-system {
   margin-bottom: var(--spacing-4);
 }
 
+.footer-section {
+  text-align: left;
+}
+
 .footer-list {
   list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
 }
 
 .footer-list li {
@@ -663,6 +676,11 @@ html:not([data-theme]) .theme-icon-system {
 .footer-list a {
   color: var(--color-text-secondary);
   font-size: var(--font-size-sm);
+  text-decoration: none;
+}
+
+.footer-list a:hover {
+  text-decoration: underline;
 }
 
 .footer-list a:hover {
