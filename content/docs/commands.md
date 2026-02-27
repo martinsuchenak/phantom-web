@@ -275,6 +275,18 @@ phantom apply <overlay-name> [flags]
 | `--merge` | `false` | Merge the overlay branch into base |
 | `--push` | `false` | Push changes to remote |
 
+### `phantom revert`
+
+Revert a file or directory in an overlay to its base state. This removes any modifications, additions, or deletions made in the overlay for that specific path.
+
+```bash
+# Revert a modified config file in an overlay
+phantom revert <overlay-name> config/database.yml
+
+# Revert an entire directory
+phantom revert <overlay-name> src/components/
+```
+
 ### `phantom merge`
 
 Merge an overlay branch into the base branch.
