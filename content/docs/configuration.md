@@ -357,6 +357,42 @@ phantom config edit
 phantom config path
 ```
 
+## Path Protection (.phantomignore)
+
+You can protect specific files and directories in your repository from being modified by Phantom overlays using a `.phantomignore` file. This is useful for preventing agents from accidentally deleting crucial configuration files, credentials, or sensitive data.
+
+### How it works
+
+When you run `phantom apply`, Phantom checks for a `.phantomignore` file in the root of your base directory. If it exists, it validates every change in the overlay against the rules defined in the file. If any modification (add, update, or delete) matches a rule, the `apply` operation is rejected.
+
+### Syntax
+
+The `.phantomignore` file uses a syntax similar to `.gitignore`:
+
+- Lines starting with `#` are comments.
+- Empty lines are ignored.
+- Patterns without a slash match any file or directory with that name anywhere in the tree.
+- Patterns starting with a `/` are anchored to the repository root.
+- Patterns ending with a `/` match directories and all their contents.
+- `*` can be used as a wildcard (matching within a single directory).
+
+### Example
+
+```text
+# Protect critical infrastructure configs
+/config/database.yml
+/config/secrets.yml
+
+# Protect all .env files anywhere
+.env*
+
+# Protect the build directory entirely
+build/
+
+# Protect any secret keys
+*.key
+```
+
 ## Configuration Best Practices
 
 1. **Use project config for team settings** - Commit `.phantom.yaml` to version control
