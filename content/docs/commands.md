@@ -20,14 +20,14 @@ This page provides a comprehensive reference for all Phantom commands.
 | `snapshot` / `export` / `clone` | Save, export, duplicate overlays |
 | `lock` / `unlock` / `pin` / `unpin` | Protect overlays from cleanup and base drift |
 | `prune` / `gc` / `health` / `rename` | Maintenance, diagnostics, and renaming |
-| `config` / `init` / `template` | Configuration and scaffolding |
+| `config` / `init` / `template` / `project` | Configuration, tracking, and scaffolding |
 | `completion` | Shell completion (bash, zsh, fish, powershell) |
 
 ## Overlay Management
 
 ### `phantom start`
 
-Create and mount a new overlay.
+Create and mount a new overlay. `<base-path>` can be a directory path or a registered [project](#phantom-project).
 
 ```bash
 phantom start <base-path> --name <overlay-name> [flags]
@@ -109,7 +109,7 @@ phantom inspect <overlay-name>
 
 ### `phantom run`
 
-Create an overlay and run a single agent.
+Create an overlay and run a single agent. `<base-path>` can be a directory path or a registered [project](#phantom-project).
 
 ```bash
 phantom run <base-path> --agent <command> --task <task> --name <name> [flags]
@@ -138,7 +138,7 @@ phantom run ~/myproject --agent "aider" --task "fix tests" --name fix-tests --ti
 
 ### `phantom run-all`
 
-Run multiple agents in parallel on the same base.
+Run multiple agents in parallel on the same base. `<base-path>` can be a directory path or a registered [project](#phantom-project).
 
 ```bash
 phantom run-all <base-path> [flags]
@@ -181,7 +181,7 @@ phantom run-all ~/myproject --agents "claude --print,aider,gemini" --timeout 30
 
 ### `phantom run-chain`
 
-Run agents sequentially, each building on the previous one's work.
+Run agents sequentially, each building on the previous one's work. `<base-path>` can be a directory path or a registered [project](#phantom-project).
 
 ```bash
 phantom run-chain <base-path> [flags]
@@ -511,6 +511,26 @@ phantom init [flags]
 | Flag | Default | Description |
 |------|---------|-------------|
 | `--force` | `false` | Overwrite existing config |
+
+### `phantom project`
+
+Manage registered projects. This allows using a short project name instead of absolute directory paths for any command that accepts a base directory.
+
+```bash
+phantom project add myapp /path/to/my/app
+phantom project list
+phantom project remove myapp
+
+# Use the short name 'myapp' instead of a full path
+phantom start myapp -n my-feature
+phantom run myapp -a aider -t "fix bug"
+```
+
+**Subcommands:**
+
+- `phantom project add <name> <path>` - Register a new project and map its base directory path
+- `phantom project list` - List all registered projects and their paths
+- `phantom project remove <name>` - Delete a project mapping
 
 ### `phantom template`
 

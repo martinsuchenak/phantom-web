@@ -69,6 +69,10 @@ agents:
 
   # Timeout for individual agents
   timeout: 30m
+
+# Projects mapped to absolute paths
+projects:
+  myapp: "/Users/user/Projects/myapp"
 ```
 
 ### Configuration Locations
