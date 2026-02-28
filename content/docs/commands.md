@@ -233,11 +233,21 @@ phantom compare <overlay-a> <overlay-b> [flags]
 
 ### `phantom conflicts`
 
-Check for potential conflicts between overlays.
+Check for potential conflicts between overlays and calculate a **Merge Confidence Score**.
 
 ```bash
-phantom conflicts <overlay-a> <overlay-b>
+phantom conflicts <overlay-a> <overlay-b> ...
 ```
+
+This command identifies files modified by more than one overlay. For Git-tracked repositories, it simulates a 3-way merge to distinguish between **Clean Merges** (different locations in the same file) and **Hard Conflicts** (overlapping changes).
+
+The final **Merge Confidence Score** (0-100%) indicates how safely these overlays can be merged. In non-Git environments, any file overlap is considered an unresolvable hard conflict.
+
+**Flags:**
+
+| Flag | Default | Description |
+|------|---------|-------------|
+| `--format` | `table` | Output format: `table`, `json` |
 
 ## Applying Changes
 
