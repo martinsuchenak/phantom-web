@@ -1,0 +1,38 @@
+/* Phantom Custom Colors - Purple/Violet Theme */
+
+:root {
+  /* Dark Mode - Purple theme */
+  --color-bg-primary: #0F0F14;
+  --color-bg-surface: #1A1A24;
+  --color-bg-secondary: #1A1A24;
+  --color-bg-tertiary: #252532;
+
+  /* Brand Colors - Purple */
+  --color-accent-primary: #C4B5FD;
+  --color-accent-secondary: #A5B4FC;
+  --color-accent-hover: #A78BFA;
+
+  /* Buttons */
+  --color-btn-primary: #8B5CF6;
+  --color-btn-hover: #7C3AED;
+
+  --color-border-focus: #C4B5FD;
+}
+
+html[data-theme="light"],
+:root[data-theme="light"] {
+  /* Light Mode - Purple theme */
+  --color-accent-primary: #7C3AED;
+  --color-accent-secondary: #6D28D9;
+  --color-accent-hover: #5B21B6;
+
+  --color-btn-primary: #8B5CF6;
+  --color-btn-hover: #7C3AED;
+
+  --color-border-focus: #7C3AED;
+}
+
+/* Hero logo purple color */
+.hero-logo {
+  color: var(--color-accent-primary);
+}

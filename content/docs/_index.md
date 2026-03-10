@@ -1,12 +1,9 @@
 ---
-title: "Documentation"
-description: "Learn how to use Phantom to manage overlay filesystems and run multiple AI agents in parallel."
-weight: 3
+title: "What is Phantom?"
+description: "Phantom is a CLI tool for managing overlay filesystems to enable multiple AI agents to work on the same codebase in parallel without conflicts. Each agent gets its own isolated overlay with independent writes and its own git branch."
+weight: 1
 ---
 
-## Getting Started
-
-Phantom is a CLI tool for managing overlay filesystems to enable multiple AI agents to work on the same codebase in parallel without conflicts. Each agent gets its own isolated overlay with independent writes and its own git branch.
 
 ### Quick Start
 
@@ -69,7 +66,6 @@ Phantom supports three main workflow patterns:
 Explore the documentation to learn more about Phantom's capabilities:
 
 - **[Commands Reference](/docs/commands/)** - Every command, flag, and option
-- **[TUI Dashboard](/docs/tui/)** - Interactive terminal UI reference
 - **[Workflows & Examples](/docs/workflows/)** - Real-world usage patterns
 - **[Configuration](/docs/configuration/)** - Config file, hooks, templates, environment variables
 

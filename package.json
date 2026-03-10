@@ -1,0 +1,17 @@
+{
+  "name": "phantom-docs",
+  "version": "1.0.0",
+  "description": "Phantom CLI Documentation Website",
+  "scripts": {
+    "dev": "hugo server -D --navigateToChanged",
+    "build": "hugo --minify && npx pagefind --site public",
+    "build:preview": "hugo -b $DEPLOY_PRIME_URL --minify && npx pagefind --site public",
+    "clean": "rm -rf public resources"
+  },
+  "devDependencies": {
+    "pagefind": "^1.4.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,135 @@
+baseURL = 'https://phantom.martinsuchenak.com/'
+languageCode = 'en-us'
+title = 'Phantom'
+theme = 'docstone'
+
+# Site parameters
+[params]
+  description = 'A CLI tool for managing overlay filesystems to enable multiple AI agents to work on the same codebase in parallel without conflicts'
+  author = 'Martin Suchenak'
+  github = 'https://github.com/martinsuchenak/phantom'
+  version = 'latest'
+  license = 'MIT'
+  themeKey = 'phantom-theme'
+
+  [[params.heroActions]]
+    name = 'Get Started'
+    url = '/docs/'
+
+  [[params.heroActions]]
+    name = 'Installation'
+    url = '/installation/'
+
+  [[params.heroActions]]
+    name = 'GitHub'
+    url = 'https://github.com/martinsuchenak/phantom'
+    external = true
+
+  [[params.features]]
+    title = 'Parallel Agents'
+    description = 'Run multiple AI agents simultaneously on the same codebase without conflicts.'
+    icon = '🤖'
+    url = '/docs/'
+
+  [[params.features]]
+    title = 'Overlay Filesystems'
+    description = 'Each agent gets an isolated writable layer with independent git branches.'
+    icon = '📁'
+    url = '/docs/'
+
+  [[params.features]]
+    title = 'Merge Intelligence'
+    description = 'Automatic conflict detection with merge confidence scoring.'
+    icon = '🔀'
+    url = '/docs/'
+
+  [[params.features]]
+    title = 'Path Protection'
+    description = 'Protect critical files from modification with .phantomignore rules.'
+    icon = '🔒'
+    url = '/docs/configuration/'
+
+  [[params.features]]
+    title = 'Hooks & Automation'
+    description = 'Run tests, linters, or notifications after agent completion.'
+    icon = '⚡'
+    url = '/docs/commands/'
+
+  [[params.features]]
+    title = 'Cross-Platform'
+    description = 'Works on Linux (overlayfs/fuse-overlayfs) and macOS (unionfs-fuse).'
+    icon = '💻'
+    url = '/installation/'
+
+# Navigation menu
+[menus]
+  [[menus.main]]
+    name = 'Documentation'
+    url = '/docs/'
+    weight = 1
+
+  # Sidebar navigation
+  [[menus.sidebar]]
+    name = 'Getting Started'
+    weight = 1
+
+    [[menus.sidebar]]
+      parent = 'Getting Started'
+      name = 'What is Phantom?'
+      url = '/docs/'
+      weight = 1
+
+    [[menus.sidebar]]
+      parent = 'Getting Started'
+      name = 'Installation'
+      url = '/installation/'
+      weight = 2
+
+  [[menus.sidebar]]
+    name = 'Usage'
+    weight = 2
+
+    [[menus.sidebar]]
+      parent = 'Usage'
+      name = 'Commands Reference'
+      url = '/docs/commands/'
+      weight = 1
+
+    [[menus.sidebar]]
+      parent = 'Usage'
+      name = 'Workflows'
+      url = '/docs/workflows/'
+      weight = 2
+
+    [[menus.sidebar]]
+      parent = 'Usage'
+      name = 'Configuration'
+      url = '/docs/configuration/'
+      weight = 3
+
+# Enable necessary features
+enableRobotsTXT = true
+enableGitInfo = true
+
+# Pagination
+paginate = 10
+
+# Markup settings
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNos = false
+    noClasses = false
+    style = 'github'
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+
+# Outputs
+[outputs]
+  home = ['HTML', 'RSS']
+  section = ['HTML', 'RSS']

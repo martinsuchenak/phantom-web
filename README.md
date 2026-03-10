@@ -1,18 +1,37 @@
-# Phantom Website
+# Phantom Documentation
 
-This is the official website for [Phantom](https://github.com/martinsuchenak/phantom), built with [Hugo](https://gohugo.io/).
+Official documentation site for [Phantom](https://github.com/martinsuchenak/phantom) - a CLI tool for managing overlay filesystems to enable multiple AI agents to work on the same codebase in parallel without conflicts.
+
+Built with [Hugo](https://gohugo.io/) and the [Docstone](https://github.com/martinsuchenak/docstone) theme.
 
 ## Development
 
 ### Prerequisites
 
-- [Hugo v0.156.0+](https://gohugo.io/installation/) (extended version)
+- [Hugo v0.120.0+](https://gohugo.io/installation/) (extended version)
+- [Node.js 18+](https://nodejs.org/)
+
+### Setup
+
+```bash
+# Clone with submodules
+git clone --recursive https://github.com/martinsuchenak/phantom-web.git
+
+# Or if already cloned, initialize submodules
+git submodule update --init --recursive
+
+# Install dependencies
+npm install
+```
 
 ### Local Development
 
 ```bash
 # Start the development server
-hugo server -D
+npm run dev
+
+# Or use Hugo directly
+hugo server -D --navigateToChanged
 
 # Open http://localhost:1313
 ```
@@ -20,46 +39,69 @@ hugo server -D
 ### Build
 
 ```bash
-# Build for production
-hugo --minify
+# Build for production (includes search indexing)
+npm run build
+
+# Output will be in public/ directory
 ```
 
-Output will be in the `public/` directory.
+The build process:
+1. Hugo generates the static site
+2. Pagefind indexes the content for search
 
 ## Deployment
 
-This site is configured for automatic deployment to Cloudflare Pages.
+Configured for Cloudflare Pages with automatic deployments.
 
-### Cloudflare Pages Configuration
+### Build Configuration
 
-- **Build command:** `hugo --minify`
+- **Build command:** `npm run build`
 - **Build output directory:** `public`
-- **Root directory:** `/` (or leave empty)
 - **Environment variables:**
-  - `HUGO_VERSION`: `0.156.0`
+  - `HUGO_VERSION`: `0.157.0`
+  - `NODE_VERSION`: `18`
 
 ## Project Structure
 
 ```
 phantom-web/
-├── content/              # Markdown content
-│   ├── docs/            # Documentation pages
-│   └── installation.md  # Installation guide
-├── themes/phantom/      # Custom theme
-│   ├── assets/          # CSS, JS, images
-│   ├── layouts/         # HTML templates
-│   └── static/          # Static files
-├── hugo.yaml            # Hugo configuration
-└── README.md            # This file
+├── content/              # Markdown documentation
+│   ├── docs/            # Main documentation
+│   │   ├── commands.md
+│   │   ├── configuration.md
+│   │   └── workflows.md
+│   └── installation.md
+├── layouts/             # Site-specific template overrides
+│   ├── _default/
+│   └── partials/
+├── themes/docstone/     # Theme submodule
+├── static/              # Static assets
+├── hugo.toml            # Hugo configuration
+└── package.json         # Node dependencies
 ```
 
-## Theme Features
+## Theme
 
-- Responsive design
-- Dark mode support (coming soon)
-- Minimal dependencies
-- Fast loading
+Uses the [Docstone](https://github.com/martinsuchenak/docstone) theme via git submodule.
+
+Features:
+- Dark/light/system theme modes
+- Responsive sidebar navigation
+- Full-text search with Pagefind
+- Accessible components (keyboard navigation, ARIA labels)
+- Mobile-friendly
+
+### Updating the Theme
+
+```bash
+cd themes/docstone
+git pull origin main
+cd ../..
+git add themes/docstone
+git commit -m "Update Docstone theme"
+```
 
 ## License
 
 MIT License - see [LICENSE](LICENSE) for details.
+
